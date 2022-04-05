@@ -23,6 +23,9 @@
 		8D0205E627FBDF5300ED0459 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205E527FBDF5300ED0459 /* Types.swift */; };
 		8D0205E927FBDFA200ED0459 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205E827FBDFA200ED0459 /* Node.swift */; };
 		8D0205EB27FBDFAB00ED0459 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205EA27FBDFAB00ED0459 /* Plane.swift */; };
+		8D0205EE27FBF2C900ED0459 /* 82313467_p0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8D0205ED27FBF2C900ED0459 /* 82313467_p0.jpg */; };
+		8D0205F027FBF3E700ED0459 /* Texturable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205EF27FBF3E700ED0459 /* Texturable.swift */; };
+		8D0205F227FBF43800ED0459 /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205F127FBF43800ED0459 /* Renderable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		8D0205E527FBDF5300ED0459 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		8D0205E827FBDFA200ED0459 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		8D0205EA27FBDFAB00ED0459 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		8D0205ED27FBF2C900ED0459 /* 82313467_p0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 82313467_p0.jpg; sourceTree = "<group>"; };
+		8D0205EF27FBF3E700ED0459 /* Texturable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texturable.swift; sourceTree = "<group>"; };
+		8D0205F127FBF43800ED0459 /* Renderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,18 +119,19 @@
 		8D02055D27F9670400ED0459 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
-				8D0205E727FBDF9A00ED0459 /* Nodes */,
-				8D0205E027FBD90C00ED0459 /* Scenes */,
 				8D02055E27F9670400ED0459 /* AppDelegate.swift */,
-				8D02056027F9670400ED0459 /* SceneDelegate.swift */,
-				8D02056227F9670400ED0459 /* ViewController.swift */,
-				8D02058E27F9751200ED0459 /* Renderer.swift */,
-				8D02059027F977ED00ED0459 /* Shader.metal */,
-				8D02056427F9670400ED0459 /* Main.storyboard */,
 				8D02056727F9670500ED0459 /* Assets.xcassets */,
-				8D02056927F9670500ED0459 /* LaunchScreen.storyboard */,
+				8D0205EC27FBF2C900ED0459 /* Images */,
 				8D02056C27F9670500ED0459 /* Info.plist */,
+				8D02056927F9670500ED0459 /* LaunchScreen.storyboard */,
+				8D02056427F9670400ED0459 /* Main.storyboard */,
+				8D0205E727FBDF9A00ED0459 /* Nodes */,
+				8D02058E27F9751200ED0459 /* Renderer.swift */,
+				8D02056027F9670400ED0459 /* SceneDelegate.swift */,
+				8D0205E027FBD90C00ED0459 /* Scenes */,
+				8D02059027F977ED00ED0459 /* Shader.metal */,
 				8D0205E527FBDF5300ED0459 /* Types.swift */,
+				8D02056227F9670400ED0459 /* ViewController.swift */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -160,8 +167,18 @@
 			children = (
 				8D0205E827FBDFA200ED0459 /* Node.swift */,
 				8D0205EA27FBDFAB00ED0459 /* Plane.swift */,
+				8D0205F127FBF43800ED0459 /* Renderable.swift */,
+				8D0205EF27FBF3E700ED0459 /* Texturable.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		8D0205EC27FBF2C900ED0459 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8D0205ED27FBF2C900ED0459 /* 82313467_p0.jpg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +288,7 @@
 				8D02056B27F9670500ED0459 /* LaunchScreen.storyboard in Resources */,
 				8D02056827F9670500ED0459 /* Assets.xcassets in Resources */,
 				8D02056627F9670400ED0459 /* Main.storyboard in Resources */,
+				8D0205EE27FBF2C900ED0459 /* 82313467_p0.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,12 +316,14 @@
 				8D02058F27F9751200ED0459 /* Renderer.swift in Sources */,
 				8D02056327F9670400ED0459 /* ViewController.swift in Sources */,
 				8D0205EB27FBDFAB00ED0459 /* Plane.swift in Sources */,
+				8D0205F227FBF43800ED0459 /* Renderable.swift in Sources */,
 				8D0205E427FBD95D00ED0459 /* GameScene.swift in Sources */,
 				8D0205E927FBDFA200ED0459 /* Node.swift in Sources */,
 				8D0205E627FBDF5300ED0459 /* Types.swift in Sources */,
 				8D02055F27F9670400ED0459 /* AppDelegate.swift in Sources */,
 				8D0205E227FBD91D00ED0459 /* Scene.swift in Sources */,
 				8D02059127F977ED00ED0459 /* Shader.metal in Sources */,
+				8D0205F027FBF3E700ED0459 /* Texturable.swift in Sources */,
 				8D02056127F9670400ED0459 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

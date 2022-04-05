@@ -10,7 +10,8 @@ import MetalKit
 class GameScene: Scene {
     var quad: Plane
     override init(device: MTLDevice, size: CGSize) {
-        quad = Plane(device: device)
-        super.init(device: device, size: size)        
+        quad = Plane(device: device, imageName: "82313467_p0.jpg")
+        super.init(device: device, size: size)
+        add(childNodes: quad)
     }
 }
