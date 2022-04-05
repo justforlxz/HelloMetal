@@ -18,6 +18,11 @@
 		8D02058227F9670500ED0459 /* HelloMetalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02058127F9670500ED0459 /* HelloMetalUITestsLaunchTests.swift */; };
 		8D02058F27F9751200ED0459 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D02058E27F9751200ED0459 /* Renderer.swift */; };
 		8D02059127F977ED00ED0459 /* Shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8D02059027F977ED00ED0459 /* Shader.metal */; };
+		8D0205E227FBD91D00ED0459 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205E127FBD91D00ED0459 /* Scene.swift */; };
+		8D0205E427FBD95D00ED0459 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205E327FBD95D00ED0459 /* GameScene.swift */; };
+		8D0205E627FBDF5300ED0459 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205E527FBDF5300ED0459 /* Types.swift */; };
+		8D0205E927FBDFA200ED0459 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205E827FBDFA200ED0459 /* Node.swift */; };
+		8D0205EB27FBDFAB00ED0459 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0205EA27FBDFAB00ED0459 /* Plane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,11 @@
 		8D02058127F9670500ED0459 /* HelloMetalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloMetalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8D02058E27F9751200ED0459 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
 		8D02059027F977ED00ED0459 /* Shader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shader.metal; sourceTree = "<group>"; };
+		8D0205E127FBD91D00ED0459 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		8D0205E327FBD95D00ED0459 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		8D0205E527FBDF5300ED0459 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		8D0205E827FBDFA200ED0459 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		8D0205EA27FBDFAB00ED0459 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,8 @@
 		8D02055D27F9670400ED0459 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
+				8D0205E727FBDF9A00ED0459 /* Nodes */,
+				8D0205E027FBD90C00ED0459 /* Scenes */,
 				8D02055E27F9670400ED0459 /* AppDelegate.swift */,
 				8D02056027F9670400ED0459 /* SceneDelegate.swift */,
 				8D02056227F9670400ED0459 /* ViewController.swift */,
@@ -112,6 +124,7 @@
 				8D02056727F9670500ED0459 /* Assets.xcassets */,
 				8D02056927F9670500ED0459 /* LaunchScreen.storyboard */,
 				8D02056C27F9670500ED0459 /* Info.plist */,
+				8D0205E527FBDF5300ED0459 /* Types.swift */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -131,6 +144,24 @@
 				8D02058127F9670500ED0459 /* HelloMetalUITestsLaunchTests.swift */,
 			);
 			path = HelloMetalUITests;
+			sourceTree = "<group>";
+		};
+		8D0205E027FBD90C00ED0459 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				8D0205E127FBD91D00ED0459 /* Scene.swift */,
+				8D0205E327FBD95D00ED0459 /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		8D0205E727FBDF9A00ED0459 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				8D0205E827FBDFA200ED0459 /* Node.swift */,
+				8D0205EA27FBDFAB00ED0459 /* Plane.swift */,
+			);
+			path = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +297,12 @@
 			files = (
 				8D02058F27F9751200ED0459 /* Renderer.swift in Sources */,
 				8D02056327F9670400ED0459 /* ViewController.swift in Sources */,
+				8D0205EB27FBDFAB00ED0459 /* Plane.swift in Sources */,
+				8D0205E427FBD95D00ED0459 /* GameScene.swift in Sources */,
+				8D0205E927FBDFA200ED0459 /* Node.swift in Sources */,
+				8D0205E627FBDF5300ED0459 /* Types.swift in Sources */,
 				8D02055F27F9670400ED0459 /* AppDelegate.swift in Sources */,
+				8D0205E227FBD91D00ED0459 /* Scene.swift in Sources */,
 				8D02059127F977ED00ED0459 /* Shader.metal in Sources */,
 				8D02056127F9670400ED0459 /* SceneDelegate.swift in Sources */,
 			);

@@ -16,7 +16,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         metalView.device = MTLCreateSystemDefaultDevice()
-        renderer = Renderer(device: metalView.device!)
+        guard let device = metalView.device else {
+            fatalError("Device not created. Run on a physic device!")
+        }
+        renderer = Renderer(device: device)
+        renderer.scene = GameScene(device: device, size: CGSize(width: 300, height: 300))
         metalView.clearColor = Colors.wenderlichGreen
         metalView.delegate = renderer
     }
