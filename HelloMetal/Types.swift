@@ -8,7 +8,7 @@
 import simd
 
 struct Vertex {
-    var position: SIMD3<Float>
-    var color: SIMD4<Float>
-    var texture: SIMD2<Float>
+    var position: simd_float4
+    var color: simd_float4
+    var texture: simd_float2
 }

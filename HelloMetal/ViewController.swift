@@ -25,4 +25,3 @@ class ViewController: UIViewController {
         metalView.delegate = renderer
     }
 }
-

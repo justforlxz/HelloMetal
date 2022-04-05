@@ -9,8 +9,8 @@ import MetalKit
 
 class Node {
     init() {
-        
+
     }
-    
+
     func draw(commandEncoder: MTLRenderCommandEncoder) {}
 }

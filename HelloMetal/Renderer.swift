@@ -39,9 +39,9 @@ extension Renderer: MTKViewDelegate {
         else {
             return
         }
-        
+
         let deltaTime = 1 / Float(view.preferredFramesPerSecond)
-        
+
         scene.render(commandEncoder: commandEncoder, deltaTime: deltaTime)
 
         commandEncoder.endEncoding()
@@ -49,4 +49,3 @@ extension Renderer: MTKViewDelegate {
         commandBuffer.commit()
     }
 }
-
