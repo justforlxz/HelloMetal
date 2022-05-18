@@ -8,8 +8,10 @@
 import MetalKit
 
 class Node {
-    init() {
+    var pipelineState: MTLRenderPipelineState!
+    var samplerState: MTLSamplerState?
 
+    init() {
     }
 
     func draw(commandEncoder: MTLRenderCommandEncoder) {}

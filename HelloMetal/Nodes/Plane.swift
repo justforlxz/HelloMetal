@@ -8,30 +8,14 @@
 import MetalKit
 
 class Plane: Node {
-    var positionVertices: [simd_float4] = [
-        simd_float4(-1, 1, 0, 1),
-        simd_float4(-1, -1, 0, 1),
-        simd_float4(1, -1, 0, 1),
-        simd_float4(1, 1, 0, 1),
+    var vertexData: [Vertex] = [
+        Vertex(position: simd_float3(-1, 1, 0), color:simd_float4(1,0,0,1), texture: simd_float2(0,1)),
+        Vertex(position: simd_float3(-1, -1, 0), color: simd_float4(0,1,0,1), texture: simd_float2(0,0)),
+        Vertex(position: simd_float3(1, -1, 0), color: simd_float4(0,0,0,1), texture: simd_float2(1,0)),
+        Vertex(position: simd_float3(1, 1, 0), color: simd_float4(1,1,0,1), texture: simd_float2(1,1)),
     ]
-    
-    var colorVertices: [simd_float4] = [
-        simd_float4(1, 0, 0, 1),
-        simd_float4(0, 1, 0, 1),
-        simd_float4(0, 0, 1, 1),
-        simd_float4(1, 0, 1, 1),
-    ]
-    
-    var textureVertices: [simd_float2] = [
-        simd_float2(0, 1),
-        simd_float2(0, 0),
-        simd_float2(1, 0),
-        simd_float2(1, 1),
-    ]
-    
-    var positionBuffer: MTLBuffer?
-    var colorBuffer: MTLBuffer?
-    var textureBuffer: MTLBuffer?
+
+    var vertexBuffer: MTLBuffer?
 
     let indices: [UInt16] = [
         0, 1, 2,
@@ -46,7 +30,6 @@ class Plane: Node {
     var constants = Constants()
     var time: Float = 0
     var texture: MTLTexture?
-    var samplerState: MTLSamplerState?
 
     init(device: MTLDevice) {
         super.init()
@@ -68,31 +51,36 @@ class Plane: Node {
     }
 
     // Renderable
-    var pipelineState: MTLRenderPipelineState!
     var fragmentFunctionName: String = "fragment_shader"
     var vertexFunctionname: String = "vertex_shader"
 
     var vertexDescriptor: MTLVertexDescriptor {
         let vertexDescriptor = MTLVertexDescriptor()
 
+        var offset = 0
+
         // position
-        vertexDescriptor.attributes[0].format = .float4
-        vertexDescriptor.attributes[0].offset = 0
+        vertexDescriptor.attributes[0].format = .float3
+        vertexDescriptor.attributes[0].offset = offset
         vertexDescriptor.attributes[0].bufferIndex = 0
+
+        offset += MemoryLayout<SIMD3<Float>>.stride
 
         // color
         vertexDescriptor.attributes[1].format = .float4
-        vertexDescriptor.attributes[1].offset = 0
-        vertexDescriptor.attributes[1].bufferIndex = 1
+        vertexDescriptor.attributes[1].offset = offset
+        vertexDescriptor.attributes[1].bufferIndex = 0
+
+        offset += MemoryLayout<SIMD4<Float>>.stride
 
         // texture
         vertexDescriptor.attributes[2].format = .float2
-        vertexDescriptor.attributes[2].offset = 0
-        vertexDescriptor.attributes[2].bufferIndex = 2
+        vertexDescriptor.attributes[2].offset = offset
+        vertexDescriptor.attributes[2].bufferIndex = 0
 
-        vertexDescriptor.layouts[0].stride = MemoryLayout<simd_float4>.stride
-        vertexDescriptor.layouts[1].stride = MemoryLayout<simd_float4>.stride
-        vertexDescriptor.layouts[2].stride = MemoryLayout<simd_float2>.stride
+        offset += MemoryLayout<SIMD2<Float>>.stride
+
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
 
         return vertexDescriptor
     }
@@ -118,15 +106,8 @@ class Plane: Node {
         indexBuffer = device.makeBuffer(bytes: indices,
                                         length: indices.count * MemoryLayout<UInt16>.size,
                                         options: [])
-        positionBuffer = device.makeBuffer(bytes: positionVertices,
-                                          length: positionVertices.count * MemoryLayout<simd_float4>.size,
-                                          options: [])
-        colorBuffer = device.makeBuffer(bytes: colorVertices,
-                                          length: colorVertices.count * MemoryLayout<simd_float4>.size,
-                                          options: [])
-        textureBuffer = device.makeBuffer(bytes: textureVertices,
-                                          length: textureVertices.count * MemoryLayout<simd_float2>.size,
-                                          options: [])
+        vertexBuffer = device.makeBuffer(bytes: vertexData,
+                                       length: vertexData.count * MemoryLayout<Vertex>.stride,options:[])
     }
 
     private func buildSamplerState(device: MTLDevice) {
@@ -139,24 +120,12 @@ class Plane: Node {
     override func draw(commandEncoder: MTLRenderCommandEncoder) {
         guard
             let indexBuffer = indexBuffer,
-            let vertex1Buffer = positionBuffer,
-            let vertex2Buffer = colorBuffer,
-            let vertex3Buffer = textureBuffer
+            let vertexBuffer = vertexBuffer
         else {
             return
         }
 
-        //commandEncoder.setTriangleFillMode(.lines)
-
-        commandEncoder.setVertexBuffer(vertex1Buffer,
-                                        offset: 0,
-                                        index: 0)
-        commandEncoder.setVertexBuffer(vertex2Buffer,
-                                        offset: 0,
-                                        index: 1)
-        commandEncoder.setVertexBuffer(vertex3Buffer,
-                                        offset: 0,
-                                        index: 2)
+        commandEncoder.setVertexBuffer(vertexBuffer,offset:0,index:0)
 
         commandEncoder.setFragmentTexture(texture, index: 0)
         commandEncoder.drawIndexedPrimitives(type: .triangle,

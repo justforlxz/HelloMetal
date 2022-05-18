@@ -8,11 +8,11 @@
 import MetalKit
 
 class Scene {
-    var childNodes: [Plane]
+    var childNodes: [Node]
     init(device: MTLDevice, size: CGSize) {
-        childNodes = [Plane]()
+        childNodes = [Node]()
     }
-    func add(childNodes: Plane) {
+    func add(childNodes: Node) {
         self.childNodes += [childNodes]
     }
 
